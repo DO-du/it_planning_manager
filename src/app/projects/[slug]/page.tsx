@@ -60,25 +60,34 @@ export default async function ProjectDetailPage({
           </div>
         </div>
 
-        {detail?.image && (
-          <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-background">
-            <Image
-              src={detail.image}
-              alt={detail.imageAlt ?? project.name}
-              width={1600}
-              height={900}
-              className="h-auto w-full object-contain"
-              sizes="(min-width: 1024px) 960px, 100vw"
-              priority
-            />
-          </div>
-        )}
+        {(() => {
+          if (!detail || !("image" in detail) || !detail.image) return null;
+          const imageUrl = detail.image as string;
+          const imageAlt = ("imageAlt" in detail && detail.imageAlt) ? (detail.imageAlt as string) : project.name;
+          return (
+            <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-background">
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                width={1600}
+                height={900}
+                className="h-auto w-full object-contain"
+                sizes="(min-width: 1024px) 960px, 100vw"
+                priority
+              />
+            </div>
+          );
+        })()}
 
-        {detail?.intro && (
-          <p className="mt-10 max-w-3xl whitespace-pre-line text-sm leading-7 text-foreground/85 sm:text-base">
-            {detail.intro}
-          </p>
-        )}
+        {(() => {
+          if (!detail || !("intro" in detail) || !detail.intro) return null;
+          const introText = detail.intro as string;
+          return (
+            <p className="mt-10 max-w-3xl whitespace-pre-line text-sm leading-7 text-foreground/85 sm:text-base">
+              {introText}
+            </p>
+          );
+        })()}
 
         <div className="mt-10 grid gap-6">
           {detail?.sections?.map((s, idx) => {
@@ -97,11 +106,15 @@ export default async function ProjectDetailPage({
                 >
                   {s.title}
                 </h2>
-                {s.body && (
-                  <p className={`mt-3 whitespace-pre-line text-sm leading-7 text-muted sm:text-base ${isMain ? "" : "ml-6"}`}>
-                    {s.body}
-                  </p>
-                )}
+                {(() => {
+                  if (!("body" in s) || !s.body) return null;
+                  const bodyText = s.body as string;
+                  return (
+                    <p className={`mt-3 whitespace-pre-line text-sm leading-7 text-muted sm:text-base ${isMain ? "" : "ml-6"}`}>
+                      {bodyText}
+                    </p>
+                  );
+                })()}
                 {s.bullets?.length ? (
                   <ul className={`mt-3 list-disc space-y-1 ${isMain ? "pl-5" : "ml-6 pl-11"} text-sm leading-7 text-foreground/85 marker:text-muted sm:text-base`}>
                     {s.bullets.map((b) => (

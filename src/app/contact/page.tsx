@@ -75,29 +75,47 @@ export default function ContactPage() {
             href={`tel:${site.phone.replaceAll("-", "")}`}
           />
 
-          {site.links.github && (
-            <ContactItem
-              label="GitHub"
-              value={site.links.github.replace("https://", "")}
-              href={site.links.github}
-            />
-          )}
+          {(() => {
+            const github = site.links.github as string;
+            if (github && github.length > 0) {
+              return (
+                <ContactItem
+                  label="GitHub"
+                  value={github.replace("https://", "")}
+                  href={github}
+                />
+              );
+            }
+            return null;
+          })()}
 
-          {site.links.linkedin && (
-            <ContactItem
-              label="LinkedIn"
-              value={site.links.linkedin.replace("https://", "")}
-              href={site.links.linkedin}
-            />
-          )}
+          {(() => {
+            const linkedin = site.links.linkedin as string;
+            if (linkedin && linkedin.length > 0) {
+              return (
+                <ContactItem
+                  label="LinkedIn"
+                  value={linkedin.replace("https://", "")}
+                  href={linkedin}
+                />
+              );
+            }
+            return null;
+          })()}
 
-          {site.links.blog && (
-            <ContactItem
-              label="Blog"
-              value={site.links.blog.replace("https://", "")}
-              href={site.links.blog}
-            />
-          )}
+          {(() => {
+            const blog = site.links.blog as string;
+            if (blog && blog.length > 0) {
+              return (
+                <ContactItem
+                  label="Blog"
+                  value={blog.replace("https://", "")}
+                  href={blog}
+                />
+              );
+            }
+            return null;
+          })()}
         </div>
 
         <div className="mt-10 rounded-2xl border border-border bg-card p-6 text-sm leading-6 text-foreground/85 shadow-sm">
