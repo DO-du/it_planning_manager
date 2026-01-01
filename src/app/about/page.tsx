@@ -128,15 +128,20 @@ export default function AboutPage() {
                   // 특정 항목들은 제목에서 제외 (작은 글씨로 표시)
                   const isExcluded = titleMatch && (
                     titleMatch[1] === "배치 통제 체계 구현" ||
-                    titleMatch[1] === "쿠버네티스 기반 배포 지원"
+                    titleMatch[1] === "쿠버네티스 기반 배포 지원" ||
+                    titleMatch[1] === "이러한 역량들을 바탕으로 IT Planning Manager로서, 규제 환경 안에서도 혁신하는 최적 경로를 만들어가겠습니다."
                   );
                   
                   if (isTitle && !isExcluded) {
                     const isFirstTitle = titleIndices[0] === idx;
+                    const isSecondTitle = titleMatch && (
+                      titleMatch[1] === "대규모 핀테크 플랫폼 운영 체계의 기틀 마련" ||
+                      titleMatch[1] === "대규모 핀테크 플랫폼 운영 체계 구축"
+                    );
                     return (
-                      <div key={idx} className={isFirstTitle ? "" : "pt-12"}>
+                      <div key={idx} className={isFirstTitle ? "" : isSecondTitle ? "pt-36" : "pt-12"}>
                         <h2 className="text-lg font-semibold tracking-tight text-primary sm:text-xl">
-                          {titleMatch ? titleMatch[1] : p}
+                          | {titleMatch ? titleMatch[1] : p}
                         </h2>
                       </div>
                     );
@@ -145,10 +150,18 @@ export default function AboutPage() {
                   // 마무리 멘트 시작 부분인지 확인
                   const isClosingSection = p.includes("개발부터 운영까지 전 과정을 아우르며");
                   
+                  // 다음 문단이 "대규모 핀테크 플랫폼 운영 체계" 제목인지 확인
+                  const nextIsSecondTitle = idx + 1 < paragraphs.length && 
+                    (/^\*\*대규모 핀테크 플랫폼 운영 체계의 기틀 마련\*\*$/.test(paragraphs[idx + 1]) ||
+                     /^\*\*대규모 핀테크 플랫폼 운영 체계 구축\*\*$/.test(paragraphs[idx + 1]));
+                  
+                  // "특히 금융 IT 환경에서는..." 문단 뒤에 간격 추가
+                  const isBeforeSecondTitle = p.includes("특히 금융 IT 환경에서는") && p.includes("현장의 암묵지를 표준 가이드로 체계화하여");
+                  
                   return (
                     <p
                       key={idx}
-                      className={`whitespace-pre-line text-base font-medium leading-6 text-foreground/85 sm:text-lg sm:leading-8 ${isClosingSection ? "mt-16" : ""}`}
+                      className={`whitespace-pre-line text-base font-medium leading-6 text-foreground/85 sm:text-lg sm:leading-8 ${isClosingSection ? "mt-20" : ""} ${nextIsSecondTitle ? "mb-16" : ""} ${isBeforeSecondTitle ? "mb-16" : ""}`}
                     >
                       {parseBold(p)}
                     </p>
