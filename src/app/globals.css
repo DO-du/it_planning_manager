@@ -355,6 +355,61 @@ body {
   filter: drop-shadow(0 18px 40px color-mix(in oklab, var(--primary) 10%, transparent));
 }
 
+@keyframes particleDissolve {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(var(--rotate, 0deg)) scale(1) translate(0, 0);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(var(--rotate, 0deg)) scale(0.3) translate(var(--tx, 60px), var(--ty, -40px));
+    filter: blur(8px);
+  }
+}
+
+@keyframes logoDissolve {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+    filter: blur(12px);
+  }
+}
+
+.logo-dissolve {
+  animation: logoDissolve 500ms ease-out forwards;
+}
+
+@keyframes tossZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(4);
+    filter: blur(8px);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1.1);
+    filter: blur(0px);
+  }
+  70% {
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0px);
+  }
+}
+
+.toss-zoom-in {
+  animation: tossZoomIn 450ms cubic-bezier(0.2, 2, 0.4, 1) forwards;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .toss-orbit,
   .toss-orbit-item,
