@@ -129,7 +129,7 @@ export default function AboutPage() {
                   const isExcluded = titleMatch && (
                     titleMatch[1] === "배치 통제 체계 구현" ||
                     titleMatch[1] === "쿠버네티스 기반 배포 지원" ||
-                    titleMatch[1] === "이러한 역량들을 바탕으로 IT Planning Manager로서, 규제 환경 안에서도 혁신하는 최적 경로를 만들어가겠습니다."
+                    titleMatch[1] === "이러한 역량들로 IT Planning Manager로서, 규제 환경 안에서도 혁신하는 최적 경로를 만들어가겠습니다."
                   );
                   
                   if (isTitle && !isExcluded) {
