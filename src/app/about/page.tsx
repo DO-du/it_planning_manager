@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { site } from "@/lib/site";
 
@@ -77,16 +78,82 @@ export default function AboutPage() {
               .map((p) => p.trim())
               .filter(Boolean);
 
+            // **텍스트** 형식을 파싱하는 함수
+            const parseBold = (text: string) => {
+              const parts: (string | React.ReactElement)[] = [];
+              const regex = /\*\*(.+?)\*\*/g;
+              let lastIndex = 0;
+              let match;
+
+              while ((match = regex.exec(text)) !== null) {
+                if (match.index > lastIndex) {
+                  parts.push(text.substring(lastIndex, match.index));
+                }
+                parts.push(
+                  <strong key={match.index} className="font-semibold">
+                    {match[1]}
+                  </strong>
+                );
+                lastIndex = regex.lastIndex;
+              }
+
+              if (lastIndex < text.length) {
+                parts.push(text.substring(lastIndex));
+              }
+
+              return parts.length > 0 ? parts : [text];
+            };
+
+            // 제목 인덱스 찾기
+            const titleIndices: number[] = [];
+            paragraphs.forEach((p, idx) => {
+              const isTitle = /^\*\*(.+?)\*\*$/.test(p);
+              const titleMatch = p.match(/^\*\*(.+?)\*\*$/);
+              const isExcluded = titleMatch && (
+                titleMatch[1] === "배치 통제 체계 구현" ||
+                titleMatch[1] === "쿠버네티스 기반 배포 지원"
+              );
+              if (isTitle && !isExcluded) {
+                titleIndices.push(idx);
+              }
+            });
+
             return (
-              <div className="space-y-8">
-                {paragraphs.map((p, idx) => (
-                  <p
-                    key={idx}
-                    className="whitespace-pre-line text-base font-medium leading-6 text-foreground/85 sm:text-lg sm:leading-8"
-                  >
-                    {p}
-                  </p>
-                ))}
+              <div className="space-y-4">
+                {paragraphs.map((p, idx) => {
+                  // 제목인지 확인 (단독으로 **텍스트**만 있는 경우, 단 특정 항목들은 제외)
+                  const isTitle = /^\*\*(.+?)\*\*$/.test(p);
+                  const titleMatch = p.match(/^\*\*(.+?)\*\*$/);
+                  
+                  // 특정 항목들은 제목에서 제외 (작은 글씨로 표시)
+                  const isExcluded = titleMatch && (
+                    titleMatch[1] === "배치 통제 체계 구현" ||
+                    titleMatch[1] === "쿠버네티스 기반 배포 지원"
+                  );
+                  
+                  if (isTitle && !isExcluded) {
+                    const isFirstTitle = titleIndices[0] === idx;
+                    return (
+                      <div key={idx} className={isFirstTitle ? "" : "pt-12"}>
+                        <h2 className="text-lg font-semibold tracking-tight text-primary sm:text-xl">
+                          {titleMatch ? titleMatch[1] : p}
+                        </h2>
+                      </div>
+                    );
+                  }
+
+                  // 마무리 멘트 시작 부분인지 확인
+                  const isClosingSection = p.includes("개발부터 운영까지 전 과정을 아우르며");
+                  
+                  return (
+                    <p
+                      key={idx}
+                      className={`whitespace-pre-line text-base font-medium leading-6 text-foreground/85 sm:text-lg sm:leading-8 ${isClosingSection ? "mt-16" : ""}`}
+                    >
+                      {parseBold(p)}
+                    </p>
+                  );
+                })}
               </div>
             );
           })()}

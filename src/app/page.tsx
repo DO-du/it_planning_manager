@@ -54,15 +54,15 @@ export default function Home() {
         <section id="content" className="bg-surface">
           <div className="mx-auto w-full max-w-6xl px-6 pt-20 pb-12 sm:px-8 sm:pt-24 sm:pb-16">
             <div className="mx-auto max-w-3xl">
-              <h2 className="mt-12 text-balance text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+              <h2 className="mt-6 text-balance text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
                 안녕하세요, <span className="text-primary">{site.name}</span>입니다
               </h2>
-              <p className="mt-5 whitespace-pre-line text-sm leading-7 text-muted sm:text-base">
+              <p className="mt-4 whitespace-pre-line text-sm leading-6.5 text-muted sm:text-base">
                 {site.about}
               </p>
 
               {"aboutKeywords" in site && Array.isArray(site.aboutKeywords) && (
-                <div className="mt-10">
+                <div className="mt-5">
                   <KeywordCloud
                     center="IT Planning Manager"
                     items={site.aboutKeywords.map((t) => ({
@@ -72,13 +72,13 @@ export default function Home() {
                         t === "핀테크 플랫폼 기획·개발·운영 경험" ||
                         t === "IT 내부통제/변경관리" ||
                         t === "운영 자동화(DevOps)" ||
-                        t === "AI·바이브 코딩",
+                        t === "실무 중심의 기술 통찰",
                     }))}
                   />
                 </div>
               )}
 
-              <div className="mt-20 flex flex-col items-center gap-3 sm:mt-24">
+              <div className="mt-12 flex flex-col items-center gap-3 sm:mt-13">
                 <div className="inline-flex items-center rounded-full bg-primary/85 px-2 py-2 text-primary-foreground shadow-sm shadow-primary/10">
                   <Link
                     href="/about"

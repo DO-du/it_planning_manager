@@ -26,23 +26,23 @@ export function KeywordCloud({
   items: Item[];
 }) {
   const positions = [
-    { x: -210, y: -90 },
-    { x: 40, y: -120 },
+    { x: -280, y: -90 },
+    { x: 60, y: -80 },
     { x: 200, y: -40 },
-    { x: 220, y: 70 },
-    { x: 70, y: 125 },
-    { x: -160, y: 120 },
-    { x: -240, y: 30 },
-    { x: -40, y: 50 },
-    { x: 260, y: 10 },
-    { x: -10, y: 160 },
-    { x: -260, y: -10 },
-    { x: 140, y: -160 },
+    { x: -350, y: -10 },
+    { x: 100, y: 100 },
+    { x: -220, y: 90 },
+    { x: -320, y: 30 },
+    { x: -60, y: 50 },
+    { x: 230, y: 10 },
+    { x: -20, y: 160 },
+    { x: -350, y: -10 },
+    { x: 200, y: -160 },
   ].slice(0, items.length); // prevent duplicated keywords
 
   return (
-    <div className="relative mx-auto w-full max-w-xl">
-      <div className="relative h-[260px] w-full">
+    <div className="relative mx-auto w-full max-w-2xl">
+      <div className="relative h-[220px] w-full">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="keyword-center bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-2xl font-semibold tracking-tight text-transparent sm:text-3xl">
             {center}

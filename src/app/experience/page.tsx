@@ -23,20 +23,38 @@ export default function ExperiencePage() {
           <div className="mt-10">
             {"careerOverview" in site && Array.isArray(site.careerOverview.lines) && (
               <div className="max-w-4xl">
-                {site.careerOverview.lines.map((t, idx) => (
-                  <div
-                    key={t}
-                    className={
-                      idx === 0
-                        ? "text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
-                        : idx === 1
+                {site.careerOverview.lines.map((t, idx) => {
+                  if (idx === 0) {
+                    // "NIT Service (네이버 계열사) 네이버파이낸셜 플랫폼 운영 팀"을 분리
+                    const parts = t.split(" 네이버파이낸셜 플랫폼 운영 팀");
+                    return (
+                      <div
+                        key={t}
+                        className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl"
+                      >
+                        {parts[0]}
+                        {parts[1] !== undefined && (
+                          <>
+                            {" "}
+                            <span className="text-lg sm:text-xl">네이버파이낸셜 플랫폼 운영 팀</span>
+                          </>
+                        )}
+                      </div>
+                    );
+                  }
+                  return (
+                    <div
+                      key={t}
+                      className={
+                        idx === 1
                           ? "mt-2 text-lg font-semibold tracking-tight text-foreground/85 sm:text-xl"
                           : "mt-5 text-base font-medium tracking-tight text-muted/70 sm:text-lg"
-                    }
-                  >
-                    {t}
-                  </div>
-                ))}
+                      }
+                    >
+                      {t}
+                    </div>
+                  );
+                })}
               </div>
             )}
             <div className="mt-10 grid gap-12 border-t border-border/60 pt-10">
