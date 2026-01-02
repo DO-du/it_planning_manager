@@ -141,7 +141,7 @@ export default function AboutPage() {
                     return (
                       <div key={idx} className={isFirstTitle ? "" : isSecondTitle ? "pt-36" : "pt-12"}>
                         <h2 className="text-lg font-semibold tracking-tight text-primary sm:text-xl">
-                          | {titleMatch ? titleMatch[1] : p}
+                          <span className="inline-block -mt-1 text-2xl font-bold leading-none">|</span> {titleMatch ? titleMatch[1] : p}
                         </h2>
                       </div>
                     );

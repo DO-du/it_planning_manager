@@ -192,8 +192,8 @@ export const site = {
         "노코드 AI 도구 도입 프로젝트",
         "전금법망 환경 내 Dify 설치 및 검증(GitHub 로그인·사내도구 연동)",
         "Dify 플러그인 검증 및 테스트",
-        "Jira 및 Github, 사내 메신저 및 API 연동",
-        "Dify 기능 테스트 및 가이드 작성(코드·RAG·MCP, 플러그인 설치 방법)",
+        "Dify Jira 및 Github, 사내 메신저 및 API 연동",
+        "Dify 기능 테스트 및 가이드 작성(코드·RAG, 플러그인 설치 방법)",
         "n8n 자료조사 및 사내 사용 사례 확인",
       ],
       impact: [

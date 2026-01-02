@@ -10,7 +10,7 @@ export function ProjectCard({ project }: { project: Project }) {
         <div className="min-w-0 flex-1">
           <h3 className={`text-lg font-bold tracking-tight transition-colors ${
             canDetail 
-              ? "text-foreground dark:text-primary group-hover:text-foreground/90 dark:group-hover:text-primary/90" 
+              ? "project-card-title-detail" 
               : "text-foreground group-hover:text-primary"
           }`}>
             {project.name}
@@ -94,7 +94,7 @@ export function ProjectCard({ project }: { project: Project }) {
 
   if (!canDetail) {
     return (
-      <article className="group relative rounded-xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:border-border hover:shadow-md">
+      <article className="group relative rounded-xl border border-border/50 bg-card dark:bg-surface/50 p-6 shadow-sm transition-all hover:border-border hover:shadow-md">
         {content}
       </article>
     );
