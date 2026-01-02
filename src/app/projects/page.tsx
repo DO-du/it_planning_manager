@@ -52,7 +52,7 @@ export default function ProjectsPage() {
             프로젝트
           </h1>
           <p className="text-sm leading-6 text-muted">
-            <span className="font-semibold text-primary">파란색 테두리 카드</span>는 클릭하면 자세히 볼 수 있어요.
+            <span className="font-semibold text-primary">파란색 카드</span>는 클릭하면 자세히 볼 수 있어요.
           </p>
         </div>
 

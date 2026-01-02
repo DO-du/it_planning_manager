@@ -7,29 +7,46 @@ export function ProjectCard({ project }: { project: Project }) {
   const content = (
     <>
       <div className="flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <h3 className="truncate text-base font-semibold text-foreground">
+        <div className="min-w-0 flex-1">
+          <h3 className={`text-lg font-bold tracking-tight transition-colors ${
+            canDetail 
+              ? "text-foreground dark:text-primary group-hover:text-foreground/90 dark:group-hover:text-primary/90" 
+              : "text-foreground group-hover:text-primary"
+          }`}>
             {project.name}
           </h3>
           {project.summary && (
-            <p className="mt-2 text-sm leading-6 text-muted">
+            <p className={`mt-2.5 text-sm leading-6 ${
+              canDetail ? "text-foreground/80" : "text-muted/90"
+            }`}>
               {project.summary}
             </p>
           )}
         </div>
       </div>
 
-      <ul className="mt-4 list-disc space-y-1 pl-5 text-sm leading-6 text-foreground/85">
+      <ul className={`mt-5 space-y-2 text-sm leading-6 ${
+        canDetail ? "text-foreground/75" : "text-foreground/80"
+      }`}>
         {project.highlights.slice(0, 2).map((h) => (
-          <li key={h}>{h}</li>
+          <li key={h} className="flex items-start gap-2.5">
+            <span className={`-mt-0.5 shrink-0 text-base font-bold leading-6 ${
+              canDetail ? "text-primary" : "text-primary/70"
+            }`}>|</span>
+            <span>{h}</span>
+          </li>
         ))}
       </ul>
 
-      <ul className="mt-4 flex flex-wrap gap-2">
+      <ul className="mt-5 flex flex-wrap gap-2">
         {project.tags.map((t) => (
           <li
             key={t}
-            className="rounded-full border border-border bg-surface px-2.5 py-1 text-xs text-muted"
+            className={`rounded-full px-2.5 py-1 text-xs font-medium ${
+              canDetail
+                ? "border border-primary/20 dark:border-primary/30 bg-primary/20 dark:bg-primary/30 text-primary/90 dark:text-primary/80"
+                : "border border-border/60 bg-surface/80 text-muted/90"
+            }`}
           >
             {t}
           </li>
@@ -77,22 +94,20 @@ export function ProjectCard({ project }: { project: Project }) {
 
   if (!canDetail) {
     return (
-      <article className="group relative rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <article className="group relative rounded-xl border border-border/50 bg-card p-6 shadow-sm transition-all hover:border-border hover:shadow-md">
         {content}
       </article>
     );
   }
 
   return (
-    <article className="group relative cursor-pointer rounded-2xl bg-gradient-to-r from-primary/70 via-sky-400/60 to-primary/70 p-[2px] shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-md">
+    <article className="group relative cursor-pointer overflow-hidden rounded-xl bg-primary/5 dark:bg-primary/12 p-6 shadow-sm transition-all hover:bg-primary/8 dark:hover:bg-primary/18 hover:shadow-lg">
       <Link
         href={`/projects/${project.slug}`}
         aria-label={`${project.name} 상세 보기`}
-        className="absolute inset-0 z-10 rounded-2xl"
+        className="absolute inset-0 z-10 rounded-xl"
       />
-      <div className="rounded-2xl bg-card p-6">
-        {content}
-      </div>
+      {content}
     </article>
   );
 }

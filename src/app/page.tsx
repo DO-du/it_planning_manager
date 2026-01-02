@@ -136,7 +136,7 @@ export default function Home() {
                 visual: {
                   variant: "kpi" as const,
                   title: "성과 요약",
-                  items: [ "Kafka 지연 94% 감소", "초당 처리량 3,000→12,000 TPS" , "이슈 생성 시간 최대 1시간 → 1분 이내" , "보고서 작성시간 9시간 → 1시간 이내"],
+                  items: [ "Kafka 지연 94% 감소", "초당 처리량 3,000→12,000 TPS" , "이슈 생성 시간 최대 1시간 → 1분 이내"],
                   stats: [
                     { label: "이슈 생성 시간", value: "1h+ → 0~1m" },
                     { label: "초당 처리량(TPS)", value: "3,000 → 12,000" },
