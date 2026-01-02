@@ -136,7 +136,7 @@ export default function Home() {
                 visual: {
                   variant: "kpi" as const,
                   title: "성과 요약",
-                  items: [ "Kafka 지연 94% 감소", "초당 처리량 3,000→12,000 TPS"],
+                  items: [ "Kafka 지연 94% 감소", "초당 처리량 3,000→12,000 TPS" , "이슈 생성 시간 최대 1시간 → 1분 이내" , "보고서 작성시간 9시간 → 1시간 이내"],
                   stats: [
                     { label: "이슈 생성 시간", value: "1h+ → 0~1m" },
                     { label: "초당 처리량(TPS)", value: "3,000 → 12,000" },
@@ -195,7 +195,7 @@ export default function Home() {
                 links: [{ href: "/projects/policy-change-transition", label: "자세히 보기" }],
               },
             ].map((s, idx) => (
-              <div key={s.title} className="mt-40 sm:mt-48">
+              <div key={s.title} className="mt-56 sm:mt-72">
                 {/* layout variants: intentionally not all side-by-side */}
                 {s.layout === "split" && (
                   <div className="grid items-center gap-10 md:grid-cols-2 md:gap-12">
@@ -252,7 +252,7 @@ export default function Home() {
                         </p>
 
                         <ul className="mt-6 list-disc space-y-1 pl-5 text-sm leading-6 text-foreground/85">
-                          {s.visual.items.slice(0, 3).map((t) => (
+                          {s.visual.items.map((t) => (
                             <li key={t}>{t}</li>
                           ))}
                         </ul>

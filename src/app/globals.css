@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  /* Toss-like palette (light-first) */
+  /* Toss Design System v3 - Updated color system */
   --background: #ffffff;
   --surface: #f2f4f6;
   --foreground: #191f28;
   --muted: #6b7684;
   --card: #ffffff;
   --border: #e5e8eb;
-  --primary: #0064ff;
+  --primary: #3182f7;
   --primary-foreground: #ffffff;
-  --ring: color-mix(in oklab, var(--primary) 35%, transparent);
+  --ring: color-mix(in oklch, var(--primary) 35%, transparent);
 }
 
 @theme inline {
@@ -28,17 +28,31 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
+    /* Toss Design System v3 - Dark mode with enhanced contrast */
     --background: #0b0d12;
     --surface: #0f1420;
     --foreground: #f2f4f6;
     --muted: #a6b0bf;
     --card: #111520;
     --border: #202736;
-    --primary: #4c8dff;
+    --primary: #3182f7;
     --primary-foreground: #0b0d12;
-    --ring: color-mix(in oklab, var(--primary) 40%, transparent);
+    --ring: color-mix(in oklch, var(--primary) 40%, transparent);
   }
+}
+
+.dark {
+  /* Toss Design System v3 - Dark mode with enhanced contrast */
+  --background: #0b0d12;
+  --surface: #0f1420;
+  --foreground: #f2f4f6;
+  --muted: #a6b0bf;
+  --card: #111520;
+  --border: #202736;
+  --primary: #3182f7;
+  --primary-foreground: #0b0d12;
+  --ring: color-mix(in oklch, var(--primary) 40%, transparent);
 }
 
 body {
@@ -51,7 +65,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--primary) 22%, transparent);
+  background: color-mix(in oklch, var(--primary) 22%, transparent);
 }
 
 @keyframes tossOrbit {
@@ -90,15 +104,15 @@ body {
 @keyframes tossPulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 12px 36px color-mix(in oklab, var(--primary) 10%, transparent);
+    box-shadow: 0 12px 36px color-mix(in oklch, var(--primary) 10%, transparent);
   }
   50% {
     transform: scale(1.01);
-    box-shadow: 0 16px 44px color-mix(in oklab, var(--primary) 14%, transparent);
+    box-shadow: 0 16px 44px color-mix(in oklch, var(--primary) 14%, transparent);
   }
   100% {
     transform: scale(1);
-    box-shadow: 0 12px 36px color-mix(in oklab, var(--primary) 10%, transparent);
+    box-shadow: 0 12px 36px color-mix(in oklch, var(--primary) 10%, transparent);
   }
 }
 
@@ -260,7 +274,7 @@ body {
   right: 0;
   bottom: 0;
   height: 1px;
-  background: color-mix(in oklab, var(--border) 85%, transparent);
+  background: color-mix(in oklch, var(--border) 85%, transparent);
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -352,7 +366,7 @@ body {
 .orbit-center {
   animation: orbitCenterPulse 3.8s ease-in-out infinite;
   transform-origin: center;
-  filter: drop-shadow(0 18px 40px color-mix(in oklab, var(--primary) 10%, transparent));
+  filter: drop-shadow(0 18px 40px color-mix(in oklch, var(--primary) 10%, transparent));
 }
 
 @keyframes particleDissolve {
@@ -388,16 +402,16 @@ body {
 @keyframes tossZoomIn {
   0% {
     opacity: 0;
-    transform: scale(4);
-    filter: blur(8px);
+    transform: scale(3.2);
+    filter: blur(6px);
   }
-  45% {
+  50% {
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.08);
     filter: blur(0px);
   }
   70% {
-    transform: scale(0.92);
+    transform: scale(0.93);
   }
   100% {
     opacity: 1;
@@ -407,7 +421,20 @@ body {
 }
 
 .toss-zoom-in {
-  animation: tossZoomIn 450ms cubic-bezier(0.2, 2, 0.4, 1) forwards;
+  animation: tossZoomIn 500ms cubic-bezier(0.2, 1.5, 0.4, 1) forwards;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {

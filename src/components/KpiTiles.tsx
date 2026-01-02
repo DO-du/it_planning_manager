@@ -56,14 +56,17 @@ export function KpiTiles({ stats }: { stats: KpiStat[] }) {
             <div className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
               {st.value}
             </div>
-            <div className="mt-4 h-2 w-full rounded-full bg-border">
+            <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-border/60 shadow-inner">
               <div
-                className="h-2 rounded-full bg-primary transition-[width] duration-1000 ease-out"
+                className="relative h-full rounded-full bg-gradient-to-r from-primary via-primary to-primary/90 shadow-sm transition-[width] duration-1000 ease-out"
                 style={{
                   width: `${Math.round(fill * 100 * progress)}%`,
                   transitionDelay: `${idx * 120}ms`,
+                  boxShadow: '0 2px 8px color-mix(in oklch, var(--primary) 30%, transparent), inset 0 1px 0 color-mix(in oklch, var(--primary) 20%, transparent)',
                 }}
-              />
+              >
+                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
+              </div>
             </div>
           </div>
         );
