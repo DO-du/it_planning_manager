@@ -168,7 +168,7 @@ export default function Home() {
                 layout: "wide" as const,
                 title: "개발부터 운영까지 문제 해결 중심의 DevOps",
                 desc: "업무 자동화 도구를 설계·개발해 운영 효율을 높이고, 개발자·운영자 모두의 불편을 해소했습니다.",
-                image: "/devops2.png",
+                image: "/devops6.png",
                 imageAlt: "DevOps 업무 자동화 및 운영 개선 다이어그램",
                 visual: {
                   variant: "flow" as const,
