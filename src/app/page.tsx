@@ -168,7 +168,7 @@ export default function Home() {
                 layout: "wide" as const,
                 title: "개발부터 운영까지 문제 해결 중심의 DevOps",
                 desc: "업무 자동화 도구를 설계·개발해 운영 효율을 높이고, 개발자·운영자 모두의 불편을 해소했습니다.",
-                image: "/devops.png",
+                image: "/devops2.png",
                 imageAlt: "DevOps 업무 자동화 및 운영 개선 다이어그램",
                 visual: {
                   variant: "flow" as const,
@@ -364,14 +364,27 @@ export default function Home() {
                       {"image" in s && s.image ? (
                         <div className="relative mt-10 w-full overflow-visible lg:mt-16">
                           <Reveal delayMs={160} variant="left">
-                            <Image
-                              src={s.image}
-                              alt={("imageAlt" in s && s.imageAlt) ? s.imageAlt : s.title}
-                              width={960}
-                              height={960}
-                              className="h-auto w-[120%] max-w-none select-none object-contain lg:w-[155%]"
-                              sizes="(min-width: 1024px) 40vw, 100vw"
-                            />
+                            <div className="relative group">
+                              <div 
+                                className="absolute top-40 bottom-40 left-0 -right-50 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                                style={{
+                                  background: 'linear-gradient(90deg, rgb(49 130 247 / 0.15) 0%, rgb(49 130 247 / 0.1) 40%, rgb(99 102 241 / 0.15) 70%, rgb(79 70 229 / 0.3) 100%)',
+                                  backgroundSize: '200% 100%',
+                                  animation: 'gradientFlow 8s ease-in-out infinite'
+                                }}
+                              />
+                              <Image
+                                src={s.image}
+                                alt={("imageAlt" in s && s.imageAlt) ? s.imageAlt : s.title}
+                                width={960}
+                                height={960}
+                                className="relative h-auto w-[120%] max-w-none select-none object-contain lg:w-[155%] transition-transform duration-300 group-hover:scale-[1.02]"
+                                sizes="(min-width: 1024px) 40vw, 100vw"
+                                style={{
+                                  animation: 'float 8s cubic-bezier(0.4, 0, 0.6, 1) infinite, glow 4s ease-in-out infinite'
+                                }}
+                              />
+                            </div>
                           </Reveal>
                         </div>
                       ) : (
