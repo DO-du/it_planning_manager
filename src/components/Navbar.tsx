@@ -56,17 +56,17 @@ export function Navbar() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <nav className="flex items-center gap-1 overflow-x-auto">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="whitespace-nowrap rounded-full px-3 py-2 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+        <nav className="flex items-center gap-1 overflow-x-auto">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="whitespace-nowrap rounded-full px-3 py-2 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
           
           <button
             onClick={toggleDarkMode}

@@ -79,11 +79,11 @@ export default function ContactPage() {
             const github = site.links.github as string;
             if (github && github.length > 0) {
               return (
-                <ContactItem
-                  label="GitHub"
+            <ContactItem
+              label="GitHub"
                   value={github.replace("https://", "")}
                   href={github}
-                />
+            />
               );
             }
             return null;
@@ -93,11 +93,11 @@ export default function ContactPage() {
             const linkedin = site.links.linkedin as string;
             if (linkedin && linkedin.length > 0) {
               return (
-                <ContactItem
-                  label="LinkedIn"
+            <ContactItem
+              label="LinkedIn"
                   value={linkedin.replace("https://", "")}
                   href={linkedin}
-                />
+            />
               );
             }
             return null;
@@ -107,11 +107,11 @@ export default function ContactPage() {
             const blog = site.links.blog as string;
             if (blog && blog.length > 0) {
               return (
-                <ContactItem
-                  label="Blog"
+            <ContactItem
+              label="Blog"
                   value={blog.replace("https://", "")}
                   href={blog}
-                />
+            />
               );
             }
             return null;

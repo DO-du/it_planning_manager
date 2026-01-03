@@ -43,16 +43,16 @@ export default function ExperiencePage() {
                     );
                   }
                   return (
-                    <div
-                      key={t}
-                      className={
+                  <div
+                    key={t}
+                    className={
                         idx === 1
                           ? "mt-2 text-lg font-semibold tracking-tight text-foreground/85 sm:text-xl"
                           : "mt-5 text-base font-medium tracking-tight text-muted/70 sm:text-lg"
-                      }
-                    >
-                      {t}
-                    </div>
+                    }
+                  >
+                    {t}
+                  </div>
                   );
                 })}
               </div>

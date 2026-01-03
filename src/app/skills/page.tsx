@@ -36,15 +36,15 @@ export default function SkillsPage() {
 
                 return (
                   <section
-                    key={row.category}
+                  key={row.category}
                     className="rounded-2xl p-1 sm:p-2"
-                  >
+                >
                     <div className="flex items-start justify-between gap-4">
                       <h3 className="text-base font-semibold tracking-tight text-foreground sm:text-lg">
-                        {row.category}
+                    {row.category}
                       </h3>
                       <div className="h-px flex-1 bg-border/60" />
-                    </div>
+                  </div>
 
                     <div className="mt-4 flex flex-wrap gap-2">
                       {tokens.map((t) => (
@@ -54,8 +54,8 @@ export default function SkillsPage() {
                         >
                           {t}
                         </span>
-                      ))}
-                    </div>
+              ))}
+              </div>
                   </section>
                 );
               })}
@@ -66,20 +66,20 @@ export default function SkillsPage() {
         <div className="mt-12">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
             <ul className="divide-y divide-border/70">
-              {site.certifications.map((c) => (
-                <li
-                  key={`${c.name}-${c.date}`}
+            {site.certifications.map((c) => (
+              <li
+                key={`${c.name}-${c.date}`}
                   className="flex flex-col gap-1 py-4 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between"
-                >
+              >
                   <div className="min-w-0 text-sm font-semibold text-foreground">
-                    {c.name}
-                  </div>
+                  {c.name}
+                </div>
                   <div className="shrink-0 text-xs font-medium text-muted sm:text-sm">
                     {c.date}
                   </div>
-                </li>
-              ))}
-            </ul>
+              </li>
+            ))}
+          </ul>
           </div>
         </div>
       </main>

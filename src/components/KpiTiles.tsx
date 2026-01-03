@@ -44,29 +44,47 @@ export function KpiTiles({ stats }: { stats: KpiStat[] }) {
   }, []);
 
   return (
-    <div ref={ref} className="grid gap-3 sm:grid-cols-2">
+    <div ref={ref} className="grid gap-4 sm:grid-cols-2">
       {stats.slice(0, 4).map((st, idx) => {
         const fill = Math.max(0, Math.min(1, st.fill ?? 0.6));
         return (
           <div
             key={`${st.label}-${st.value}`}
-            className="rounded-2xl border border-border bg-surface p-5"
+            className="relative bg-surface/50 p-5 pl-6"
           >
-            <div className="text-xs font-medium text-muted">{st.label}</div>
-            <div className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
+            <div className="absolute left-0 top-1/2 h-24 -translate-y-1/2 w-1 bg-primary/30" />
+            <div className="text-xs font-medium text-muted/80">{st.label}</div>
+            <div className="mt-1.5 text-2xl font-bold tracking-tight text-foreground">
               {st.value}
             </div>
-            <div className="mt-4 h-3 w-full overflow-hidden rounded-full bg-border/60 shadow-inner">
-              <div
-                className="relative h-full rounded-full bg-gradient-to-r from-primary via-primary to-primary/90 shadow-sm transition-[width] duration-1000 ease-out"
-                style={{
-                  width: `${Math.round(fill * 100 * progress)}%`,
-                  transitionDelay: `${idx * 120}ms`,
-                  boxShadow: '0 2px 8px color-mix(in oklch, var(--primary) 30%, transparent), inset 0 1px 0 color-mix(in oklch, var(--primary) 20%, transparent)',
-                }}
-              >
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
-              </div>
+            <div className="relative mt-5 flex h-4 w-full gap-1 overflow-hidden">
+              {Array.from({ length: 20 }).map((_, segmentIdx) => {
+                const filledSegments = Math.round(fill * 20 * progress);
+                const isFilled = segmentIdx < filledSegments;
+                
+                return (
+                  <div
+                    key={segmentIdx}
+                    className={`relative flex-1 rounded-full transition-colors duration-1000 ease-out ${
+                      isFilled 
+                        ? "bg-primary/70 dark:bg-primary/60" 
+                        : "bg-border/40 dark:bg-border/30"
+                    }`}
+                    style={{
+                      transitionDelay: `${idx * 120 + segmentIdx * 30}ms`,
+                    }}
+                  />
+                );
+              })}
+              {progress >= 1 && (
+                <div className="absolute inset-0 pointer-events-none">
+                  <div className="h-full w-full rounded-full bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer" 
+                    style={{
+                      width: `${fill * 100}%`,
+                    }}
+                  />
+                </div>
+              )}
             </div>
           </div>
         );

@@ -124,7 +124,7 @@ export default function Home() {
               {
                 layout: "split" as const,
                 title: "IT 내부통제·변경관리 운영 체계 수립",
-                desc: "네이버파이낸셜의 내부통제 요구사항을 반영한 Jenkins 기반 변경관리 운영 체계를 구축했습니다.",
+                desc: "네이버 계열사에서 네이버파이낸셜의 내부통제·변경관리 기준에 맞춘 Jenkins 운영 체계를 구축했습니다.",
                 orbit: true,
                 visual: { variant: "flow" as const, title: "Work Control", items: ["Change request", "Approval", "Execution", "Evidence"] },
                 links: [{ href: "/projects/jenkins-batch-control", label: "자세히 보기" }],
@@ -310,11 +310,19 @@ export default function Home() {
                       <ul className="mt-6 space-y-3 text-sm leading-6 text-foreground/85">
                         <Reveal as="li" className="flex gap-3" delayMs={60}>
                           <span className="mt-0.5 text-primary">✓</span>
-                          <span>인프라 구조 분석 및 사전 검증</span>
+                          <span>클라우드 역량 기반 마련 및 학습 자료 공유</span>
                         </Reveal>
-                        <Reveal as="li" className="flex gap-3" delayMs={220}>
+                        <Reveal as="li" className="flex gap-3" delayMs={120}>
                           <span className="mt-0.5 text-primary">✓</span>
-                          <span>전환 가이드 제작 및 공유</span>
+                          <span>인프라 구조 분석 및 표준화</span>
+                        </Reveal>
+                        <Reveal as="li" className="flex gap-3" delayMs={180}>
+                          <span className="mt-0.5 text-primary">✓</span>
+                          <span>전환 가이드 및 매뉴얼 제작</span>
+                        </Reveal>
+                        <Reveal as="li" className="flex gap-3" delayMs={240}>
+                          <span className="mt-0.5 text-primary">✓</span>
+                          <span>단계별 이관 주도 및 운영 체계 구축</span>
                         </Reveal>
                       </ul>
 

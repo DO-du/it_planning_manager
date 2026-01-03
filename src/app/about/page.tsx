@@ -90,9 +90,9 @@ export default function AboutPage() {
                   parts.push(text.substring(lastIndex, match.index));
                 }
                 parts.push(
-                  <strong key={match.index} className="font-semibold">
+                  <span key={match.index} className="bg-primary/12 dark:bg-primary/18">
                     {match[1]}
-                  </strong>
+                  </span>
                 );
                 lastIndex = regex.lastIndex;
               }
@@ -164,7 +164,7 @@ export default function AboutPage() {
                       className={`whitespace-pre-line text-base font-medium leading-6 text-foreground/85 sm:text-lg sm:leading-8 ${isClosingSection ? "mt-20" : ""} ${nextIsSecondTitle ? "mb-16" : ""} ${isBeforeSecondTitle ? "mb-16" : ""}`}
                     >
                       {parseBold(p)}
-                    </p>
+          </p>
                   );
                 })}
               </div>

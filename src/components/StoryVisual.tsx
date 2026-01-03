@@ -139,9 +139,9 @@ export function StoryVisual({
                 <div className="min-w-0 flex items-center gap-2">
                   <span className="text-base">📄</span>
                   <div>
-                    <div className="text-xs font-medium text-muted">Doc {idx + 1}</div>
-                    <div className="mt-0.5 truncate text-sm font-semibold text-foreground">
-                      {t}
+                  <div className="text-xs font-medium text-muted">Doc {idx + 1}</div>
+                  <div className="mt-0.5 truncate text-sm font-semibold text-foreground">
+                    {t}
                     </div>
                   </div>
                 </div>
